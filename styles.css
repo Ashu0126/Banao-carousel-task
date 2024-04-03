@@ -1,0 +1,87 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+* {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+}
+
+.carousel-left {
+  display: flex;
+  align-items: end;
+  color: white;
+  width: 80%;
+}
+
+.carousel-left div {
+  margin: 2rem 4rem;
+}
+
+.carousel-right {
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  width: 15rem;
+  margin-bottom: 3rem;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Custom background colors for individual sections */
+.section:nth-child(1) .carousel-left {
+  background-color: #17263c; /* Tomato */
+}
+
+.section:nth-child(1) .carousel-right {
+  background-color: #1a2d4b; /* Tomato */
+}
+
+.section:nth-child(2) .carousel-left {
+  background-color: #0f113b; /* Aquamarine */
+}
+
+.section:nth-child(2) .carousel-right {
+  background-color: #121661; /* Tomato */
+}
+
+.section:nth-child(3) .carousel-left {
+  background-color: #022b92; /* Blue Violet */
+}
+
+.section:nth-child(3) .carousel-right {
+  background-color: #243a5c; /* Tomato */
+}
+
+.section:nth-child(4) .carousel-left {
+  background-color: #01824d; /* Gold */
+}
+
+.section:nth-child(4) .carousel-right {
+  background-color: #00b469; /* Tomato */
+}
