@@ -3,71 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vertical Scroll Snap</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Vertical Snap Scroll Slider</title>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="section">
-        <div class="carousel-left">
-          <div>
-            <h1>Page 1</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a href="">click here</a>
+    <div class="slider-container">
+      <div class="slide">
+        <div class="left">
+          <div class="info">
+            <div class="headings move">
+              <h1>ABC 456</h1>
+              <h1>ABC 234</h1>
+              <h1>ABC 123</h1>
+              <h1>ABC 678</h1>
+            </div>
+            <div class="para">
+              <div class="desc move">
+                <p>we are the best</p>
+                <p>We are the best web development</p>
+                <p>We are the best web development</p>
+                <p>Best since 2017</p>
+              </div>
+              <div class="desc move">
+                <p>web developement company</p>
+                <p>company in the world</p>
+                <p>company in the world</p>
+                <p>We offer wide range of</p>
+              </div>
+              <div class="desc move">
+                <p>we are the best</p>
+                <p></p>
+                <p></p>
+                <p>web developemnt and app development</p>
+              </div>
+            </div>
+            <div class="links">
+              <a>View Case Study</a>
+              <a id="btn">SKIP</a>
+            </div>
           </div>
         </div>
-        <div class="carousel-right">
-          <img
-            src="./public/img/karavan-social-networking-app-screen.png"
-            alt=""
-          />
+        <div class="right"><img src="./public/img/interior.jpg" alt="" /></div>
+        <div class="carouselBtn">
+          <!-- <p>Redefining</p>
+          <div class="headings move">
+            <h1>UX Strategy</h1>
+            <h1>Blockchain</h1>
+            <h1>25M+ Downloads</h1>
+            <h1>Text Headline</h1>
+          </div>
+          <p style="text-align: end">and UI design</p> -->
         </div>
       </div>
-      <div class="section">
-        <div class="carousel-left">
-          <div>
-            <h1>Page 1</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a href="">click here</a>
+      <div class="extra">
+        <div class="items">
+          <div class="carouselBtnItem">
+            <p>Redefining</p>
+            <h2>UX Strategy</h2>
+            <p style="text-align: end">and UI design</p>
           </div>
-        </div>
-        <div class="carousel-right">
-          <img
-            src="./public/img/karavan-social-networking-app-screen.png"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="section">
-        <div class="carousel-left">
-          <div>
-            <h1>Page 1</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a href="">click here</a>
+          <div class="carouselBtnItem">
+            <p>Powered by advance</p>
+            <h1>NASA</h1>
+            <p style="text-align: end">algorithms</p>
           </div>
-        </div>
-        <div class="carousel-right">
-          <img
-            src="./public/img/karavan-social-networking-app-screen.png"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="section">
-        <div class="carousel-left">
-          <div>
-            <h1>Page 1</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a href="">click here</a>
+          <div class="carouselBtnItem">
+            <p>The Next Big</p>
+            <h2>Blockchain</h2>
+            <p style="text-align: end">Revolution</p>
           </div>
-        </div>
-        <div class="carousel-right">
-          <img
-            src="./public/img/karavan-social-networking-app-screen.png"
-            alt=""
-          />
+          <div class="carouselBtnItem">
+            <p></p>
+            <h1>25+ Downloads</h1>
+            <p style="text-align: end">on appstore & google playstore</p>
+          </div>
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
