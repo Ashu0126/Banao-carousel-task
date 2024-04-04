@@ -5,6 +5,10 @@ html {
   padding: 0;
 }
 
+body {
+  background-color: #15243b;
+}
+
 .slide {
   display: flex;
   height: 100vh;
@@ -52,7 +56,6 @@ a {
 
 .left,
 .carouselBtn {
-  background-color: rgb(29, 56, 114);
   color: white;
 }
 
@@ -64,13 +67,13 @@ a {
 
 .carouselBtn {
   position: absolute;
-  top: 3rem;
-  left: 37%;
-  transform: translateX(-40%);
-  width: 20rem;
-  height: 20rem;
+  top: 4rem;
+  left: 38%;
+  transform: translateX(-30%);
+  width: 18rem;
+  height: 18rem;
   border-radius: 50%;
-  background-color: rgb(35, 21, 99);
+  background-color: #15243b;
 }
 
 .carouselBtnItem {
@@ -78,14 +81,6 @@ a {
   flex-direction: column;
   align-items: stretch;
   position: absolute;
-}
-
-.carouselBtnItem h1 {
-  text-align: center;
-}
-
-.carouselBtnItem p {
-  font-size: 1.3rem;
 }
 
 .headings {
@@ -103,8 +98,8 @@ a {
 
 .extra {
   position: absolute;
-  top: 8rem;
-  right: 50%;
+  top: 9rem;
+  left: 18%; /* Adjust this value according to your preference */
   color: white;
   z-index: 999;
   width: 30rem;
