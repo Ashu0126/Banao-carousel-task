@@ -1,85 +1,119 @@
-var moves = document.querySelectorAll(".move");
-var btn = document.querySelector("#btn");
+const colors = [
+  "#6411A9",
+  "#4E27CE",
+  "#01824D",
+  "#6411A9",
+  "#4E27CE",
+  "#01824D",
+  "#6411A9",
+];
 
-var links = document.querySelectorAll(".links-btn a");
+const lighterColor = [
+  "#8767dd",
+  "#6a84ff",
+  "#3ab97f",
+  "#8767dd",
+  "#6a84ff",
+  "#3ab97f",
+  "#8767dd",
+];
 
-var carsouelItem = document.querySelectorAll(".carouselBtnItem");
-var index = 0;
-var animating = false;
+let lastScrollTop = 0;
 
-const colors = ["#6411A9", "#4E27CE", "#01824D"];
+const as = document.querySelectorAll("a");
+const triggerSection = document.querySelector("section");
 
-btn.addEventListener("click", () => {
-  var zoomInScale = 0.95;
-  var zoomOutScale = 1;
+var headings = document.querySelectorAll(".headings");
+var paras = document.querySelectorAll(".paras");
 
-  if (carsouelItem.length !== index + 1 && !animating) {
-    animating = true;
-    gsap.to("body", {
-      backgroundColor: colors[index],
-      duration: 0.5,
-    });
-    gsap.to(".carouselBtn", {
-      backgroundColor: colors[index],
-      duration: 0.5,
-    });
+var photos = document.querySelectorAll(".photos");
 
-    gsap.to(carsouelItem[index], {
-      top: "-=100%",
-      ease: Expo.easeInOut,
-      duration: 0.5,
-      onComplete: () => {
-        animating = false;
-      },
-    });
-
-    index++;
-
-    gsap.to(carsouelItem[index], {
-      top: "-=100%",
-      ease: Expo.easeInOut,
-      duration: 0.5,
-    });
-  }
-});
-
-moves.forEach((move) => {
-  var ps = move.querySelectorAll("p");
-  var animating = false;
-  var h1s = move.querySelectorAll("h1");
-  var index = 0;
-
-  btn.addEventListener("click", () => {
-    if (h1s.length !== index + 1 && ps.length !== index + 1 && !animating) {
-      gsap.to(h1s[index], {
+const move = (index, scrollDirection, ele) => {
+  if (index < ele.length) {
+    if (scrollDirection === "down") {
+      gsap.to(ele[index], {
         top: "-=100%",
-        ease: Expo.easeInOut,
-        duration: 0.5,
-        onComplete: () => {
-          animating = false;
-        },
+        ease: "expo.inOut",
+        duration: 0.2,
       });
 
-      animating = true;
-      gsap.to(ps[index], {
-        top: "-=100%",
-        ease: Expo.easeInOut,
-        duration: 0.5,
+      if (index < ele.length) {
+        gsap.to(ele[index + 1], {
+          top: "-=100%",
+          ease: "expo.inOut",
+          duration: 0.2,
+        });
+      }
+    } else if (scrollDirection === "up") {
+      gsap.to(ele[index + 1], {
+        top: "+=100%",
+        ease: "expo.inOut",
+        duration: 0.2,
       });
 
-      index++;
-
-      gsap.to(ps[index], {
-        top: "-=100%",
-        ease: Expo.easeInOut,
-        duration: 0.5,
-      });
-
-      gsap.to(h1s[index], {
-        top: "-=100%",
-        ease: Expo.easeInOut,
-        duration: 0.5,
-      });
+      if (index < ele.length) {
+        gsap.to(ele[index], {
+          top: "0",
+          ease: "expo.inOut",
+          duration: 0.2,
+        });
+      }
     }
+  }
+};
+
+gsap.utils.toArray("section").forEach((section, index) => {
+  ScrollTrigger.create({
+    trigger: section,
+    start: "top top",
+    end: "bottom top",
+    onUpdate: (self) => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollDirection = scrollTop > lastScrollTop ? "down" : "up";
+
+      if (
+        (scrollDirection === "down" && self.direction === 1) ||
+        (scrollDirection === "up" && self.direction === -1)
+      ) {
+        gsap.to("body", {
+          backgroundColor: colors[index],
+          duration: 0.5,
+        });
+
+        gsap.to(".carousel", {
+          backgroundColor: colors[index],
+          duration: 0.5,
+        });
+
+        gsap.to(".photo-section", {
+          backgroundColor: lighterColor[index],
+          duration: 0.5,
+        });
+
+        prevIndex = index;
+
+        headings.forEach((head) => {
+          const h1s = head.querySelectorAll("h1");
+          move(index, scrollDirection, h1s);
+        });
+
+        paras.forEach((text) => {
+          const ps = text.querySelectorAll("p");
+          move(index, scrollDirection, ps);
+        });
+
+        photos.forEach((photo) => {
+          const img = photo.querySelectorAll(".photo");
+          move(index, scrollDirection, img);
+        });
+
+        move(index, scrollDirection, as);
+      }
+      lastScrollTop = scrollTop;
+    },
   });
 });
+
+// Add event listener for scrolling
+window.addEventListener("scroll", handleScroll);
